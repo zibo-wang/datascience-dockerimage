@@ -47,7 +47,8 @@ ENV PATH="${PATH}:/opt/conda/bin"
 COPY environment.yml .
 # Create Conda environment based on environment.yml
 RUN mamba env update -n base -f environment.yml && \
-    mamba clean -afy
+    mamba clean -afy && \
+    rm environment.yml
 
 SHELL ["/bin/bash", "-euo", "pipefail", "-c", "source /home/${USERNAME}/.bashrc"]
 
